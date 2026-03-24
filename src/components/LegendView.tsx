@@ -63,7 +63,7 @@ export function LegendView() {
       ))}
 
       <div className="rounded-lg border border-border bg-card p-4 text-sm text-muted-foreground">
-        <h4 className="font-semibold text-foreground mb-2">GUI ↔ Datasheet Mapping</h4>
+        <h4 className="font-semibold text-foreground mb-2">Kostia Commander ↔ Datasheet Mapping</h4>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs font-mono">
           <div className="flex justify-between"><span>0x30 byte 0</span><span className="text-primary">GSB</span></div>
           <div className="flex justify-between"><span>0x30 bytes 1..3</span><span className="text-primary">SR1 (0x31)</span></div>
