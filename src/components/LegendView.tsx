@@ -64,7 +64,7 @@ export function LegendView() {
 
       <div className="rounded-lg border border-border bg-card p-4 text-sm text-muted-foreground">
         <h4 className="font-semibold text-foreground mb-2">Kostia Commander ↔ Datasheet Mapping</h4>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs font-mono">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 text-xs font-mono" style={{ gridAutoFlow: 'column', gridTemplateRows: 'repeat(7, auto)' }}>
           <div className="flex gap-3"><span className="text-muted-foreground w-36">0x30 byte 0</span><span className="text-primary">GSB</span></div>
           <div className="flex gap-3"><span className="text-muted-foreground w-36">0x30 bytes 1..3</span><span className="text-primary">SR1 (0x31)</span></div>
           <div className="flex gap-3"><span className="text-muted-foreground w-36">0x30 bytes 4..6</span><span className="text-primary">SR2 (0x32)</span></div>
