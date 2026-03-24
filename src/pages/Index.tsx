@@ -33,7 +33,7 @@ const Index = () => {
             </div>
             <div>
               <h1 className="text-lg font-bold text-foreground leading-tight">L99DZ100G Register Decoder</h1>
-              <p className="text-xs text-muted-foreground">Byte-by-byte input & bit-level analysis</p>
+              <p className="text-xs text-muted-foreground">bit-level analysis</p>
             </div>
           </div>
 
