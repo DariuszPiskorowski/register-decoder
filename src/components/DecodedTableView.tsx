@@ -1,6 +1,9 @@
 import { REGISTERS } from "@/data/registerData";
 import type { RegisterState } from "@/hooks/useRegisterState";
 import { motion } from "framer-motion";
+import { Download } from "lucide-react";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";
 
 interface DecodedTableViewProps {
   state: RegisterState;
