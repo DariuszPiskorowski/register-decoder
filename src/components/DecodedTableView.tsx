@@ -37,8 +37,47 @@ export function DecodedTableView({ state }: DecodedTableViewProps) {
     });
   });
 
+  const exportPdf = () => {
+    const doc = new jsPDF({ orientation: "landscape", unit: "mm", format: "a4" });
+    doc.setFontSize(14);
+    doc.text("L99DZ100G — Decoded Table", 14, 15);
+    doc.setFontSize(8);
+    doc.text(`Generated: ${new Date().toLocaleString()}`, 14, 20);
+
+    autoTable(doc, {
+      startY: 24,
+      head: [["Register", "Datasheet", "GUI", "Bit #", "Input HEX", "Bit name", "State", "Description"]],
+      body: rows.map((r) => [r.register, r.datasheet, r.gui, String(r.bit), r.inputHex, r.bitName, String(r.bitState), r.description]),
+      styles: { fontSize: 7, cellPadding: 1.5, font: "courier" },
+      headStyles: { fillColor: [37, 99, 235], textColor: 255, fontStyle: "bold" },
+      bodyStyles: { textColor: 50 },
+      alternateRowStyles: { fillColor: [240, 245, 255] },
+      didParseCell: (data) => {
+        if (data.section === "body" && data.column.index === 6) {
+          const val = data.cell.raw as string;
+          if (val === "1") {
+            data.cell.styles.fillColor = [34, 197, 94];
+            data.cell.styles.textColor = 255;
+            data.cell.styles.fontStyle = "bold";
+          }
+        }
+      },
+    });
+
+    doc.save("L99DZ100G_Decoded_Table.pdf");
+  };
+
   return (
     <div className="space-y-4">
+      <div className="flex justify-end">
+        <button
+          onClick={exportPdf}
+          className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent"
+        >
+          <Download className="h-3.5 w-3.5" />
+          Export PDF
+        </button>
+      </div>
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
